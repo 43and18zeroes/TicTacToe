@@ -4,22 +4,29 @@ let gameOver = false;
 let currentShape = 'cross';
 
 function fillShape(id) {
-    // if field is empty it has the value 'undefinied'
-    if (!fields[id] && !gameOver) {
+    if (!fields[id] && !gameOver) { // if field is empty it has the value 'undefinied'
         if (currentShape == 'cross') {
-            currentShape = 'circle';
-            document.getElementById('player-1').classList.add('player-inactive');
-            document.getElementById('player-2').classList.remove('player-inactive');
+            changePlayerToCircle();
         } else {
-            currentShape = 'cross';
-            document.getElementById('player-1').classList.remove('player-inactive');
-            document.getElementById('player-2').classList.add('player-inactive');
+            changePlayerToCross();
         }
 
         fields[id] = currentShape;
         draw();
         checkForWin();
     }
+}
+
+function changePlayerToCircle() {
+    currentShape = 'circle';
+    document.getElementById('player-1').classList.add('player-inactive');
+    document.getElementById('player-2').classList.remove('player-inactive');
+}
+
+function changePlayerToCross() {
+    currentShape = 'cross';
+    document.getElementById('player-1').classList.remove('player-inactive');
+    document.getElementById('player-2').classList.add('player-inactive');
 }
 
 function draw() {
